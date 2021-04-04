@@ -15,4 +15,8 @@ Single
 ```Static-Chap -s 7 "/media/optio/Videos/Bones - S12E10 - The Radioactive Panthers in the Party.mkv"```   
    
    Option "-s" is the requested chapter length in Min.   
-   Default is 5 Min without option "-s"
+   Default is 5 Min without option "-s"   
+      
+      Processing is extreamly fast.   
+      Files are NOT re-encoded.   
+      Mkvpropedit & ffprobe are required.   
