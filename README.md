@@ -10,4 +10,7 @@ Batch
 
 Single   
 
-```Static-Chap -s 7 "/media/optio/Videos/Bones - S12E10 - The Radioactive Panthers in the Party.mkv"```
+```Static-Chap -s 7 "/media/optio/Videos/Bones - S12E10 - The Radioactive Panthers in the Party.mkv"```   
+   
+   Option "-s" is the requested chapter length in Min.
+   Default is 5 Min without option "-s"
