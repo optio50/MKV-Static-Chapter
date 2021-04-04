@@ -1,3 +1,5 @@
+![ScreenShot](https://raw.githubusercontent.com/optio50/MKV-Static-Chapter/main/ScreenShot.png?raw=true|alt=octocat)
+
 # MKV-Static-Chapter
 Add fixed chapter lengths to MKV files.   
 Can do batch or single files.   
