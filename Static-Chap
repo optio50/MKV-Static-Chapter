@@ -13,6 +13,7 @@ brown=$(tput setaf 130)
 yellow=$(tput setaf 226)
 red=$(tput setaf 1)
 white=$(tput setaf 15)
+Lpurple=$(tput setaf 99)
 blue=$(tput setaf 21)
 pink=$(tput setaf 200)
 Lblue=$(tput setaf 117)
@@ -93,22 +94,24 @@ Convert_Seconds()
 
 Chapter_Gen()
 {
-FileCount=1
-while [[ "${FileCount}" -le "${#Files[@]}" ]]; do
 
+FileCount=1
+
+while [[ "${FileCount}" -le "${#Files[@]}" ]]; do
 Chap_Sec=$(printf "%b\n" "${Value}"*60 | bc)
 Duration_Sec=$(ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "${Files[$FileCount]}")
 No_Chapters=$(printf "%b\n" "${Duration_Sec}"/"${Chap_Sec}" | bc)
 Duration_Min=$(Convert_Seconds "${Duration_Sec}")
 
 # Debug
-printf "%b\n" ${Lblue}"########################################################################"
-printf "%b\n" ${pink} "${Files[$FileCount]##*/}"${reset}
-printf "%b\n" ${orange} "Requested Chapter Length is ${Value} Min\n"
-printf "%b\n" "Chapter Length Converted to Seconds ${Chap_Sec}\n"
-printf "%b\n" "Movie Duration in Seconds ${Duration_Sec}\n"
-printf "%b\n" "Movie Duration in HH:MM:SS ${Duration_Min}\n"
-printf "%b\n" "Number of Chapters $(( ${No_Chapters}+1 ))\n"
+printf "%b\n"
+printf "%b\n" ${blue}"========================================================================\n"
+printf "%b" ${red} "File ${FileCount} of ${#Files[@]} ${white}----> ${Lpurple}  ${Files[$FileCount]##*/}\n"
+printf "%b\n" ${orange} "Requested Chapter Length	${Value} Min\n"
+printf "%b\n" "Chapter Length in Seconds	${Chap_Sec}\n"
+printf "%b\n" "Movie Duration in Seconds 	${Duration_Sec}\n"
+printf "%b\n" "Movie Duration in HH:MM:SS 	${Duration_Min}\n"
+printf "%b\n" "Number of Chapters		$(( ${No_Chapters}+1 ))\n"
 
 printf "%b\n" "00:00:00.000" > Chapters.txt
 
@@ -133,8 +136,9 @@ done < <(cat Chapters.txt)
 
 printf "%b\n" ${green}
 cat Chapters-Final.txt
-printf "%b\n" ${reset}
+printf "%b\n" ${yellow} "Inserting New Chapters ${purple}\n"
 mkvpropedit -c Chapters-Final.txt "${Files[$FileCount]}"
+printf "%b" ${reset}
 (( FileCount ++ ))
 RM_Temp
 done
