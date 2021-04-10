@@ -1,7 +1,7 @@
 #!/bin/bash
 #set -x
 
-# Default Chapter Length in Seconds if -s option NOT used
+# Default Chapter Length in Min if -s option NOT used
 Value="5"
 
 # Text Colors
